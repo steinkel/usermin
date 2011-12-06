@@ -1,6 +1,6 @@
 <?php
 
-App::uses('UserminAppController', 'Controller');
+App::uses('UserminAppController', 'Usermin.Controller');
 
 /**
  * Umusers Controller
@@ -11,15 +11,17 @@ class UmusersController extends UserminAppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('add', 'logout', 'loggedout');
+        $this->Auth->allow('login', 'logout', 'loggedout');
     }
 
     public function login() {
         debug('in umusers.login');
-        if ($this->Auth->login()) {
-            $this->redirect($this->Auth->redirect());
-        } else {
-            $this->Session->setFlash(__('Invalid username or password, try again'));
+        if ($this->request -> isPost()) {
+            if ($this->Auth->login()) {
+                $this->redirect($this->Auth->redirect());
+            } else {
+                $this->Session->setFlash(__('Invalid username or password, try again'));
+            }
         }
     }
 

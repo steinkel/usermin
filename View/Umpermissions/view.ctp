@@ -11,11 +11,6 @@
 			<?php echo $this->Html->link($umpermission['Umrole']['name'], array('controller' => 'umroles', 'action' => 'view', $umpermission['Umrole']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Umuser'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($umpermission['Umuser']['id'], array('controller' => 'umusers', 'action' => 'view', $umpermission['Umuser']['id'])); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Plugin'); ?></dt>
 		<dd>
 			<?php echo h($umpermission['Umpermission']['plugin']); ?>

@@ -13,7 +13,7 @@ admin backend
 routes and controller algorithm
 user registration
 user myaccount
-define permissions using code instead of database
+define permissions using code instead of database -- better use only database
 allowed by owner ?
 user overrides
 user / role tree ?
@@ -22,6 +22,8 @@ permission calculated per user ?
 authentication using auth custom class
 rule cache
 idea: random prefix for the database connection and shell for install
+ajax login ?
+facebook / twitter / other login
 
 
 DONE

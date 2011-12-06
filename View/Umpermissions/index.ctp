@@ -4,7 +4,6 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('umrole_id');?></th>
-			<th><?php echo $this->Paginator->sort('umuser_id');?></th>
 			<th><?php echo $this->Paginator->sort('plugin');?></th>
 			<th><?php echo $this->Paginator->sort('controller');?></th>
 			<th><?php echo $this->Paginator->sort('action');?></th>
@@ -19,9 +18,6 @@
 		<td><?php echo h($umpermission['Umpermission']['id']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($umpermission['Umrole']['name'], array('controller' => 'umroles', 'action' => 'view', $umpermission['Umrole']['id'])); ?>
-		</td>
-		<td>
-			<?php echo $this->Html->link($umpermission['Umuser']['id'], array('controller' => 'umusers', 'action' => 'view', $umpermission['Umuser']['id'])); ?>
 		</td>
 		<td><?php echo h($umpermission['Umpermission']['plugin']); ?>&nbsp;</td>
 		<td><?php echo h($umpermission['Umpermission']['controller']); ?>&nbsp;</td>

@@ -4,7 +4,6 @@
 		<legend><?php echo __('Add Umpermission'); ?></legend>
 	<?php
 		echo $this->Form->input('umrole_id');
-		echo $this->Form->input('umuser_id');
 		echo $this->Form->input('plugin');
 		echo $this->Form->input('controller');
 		echo $this->Form->input('action');

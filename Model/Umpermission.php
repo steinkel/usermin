@@ -1,5 +1,5 @@
 <?php
-App::uses('UserminAppModel', 'Model');
+App::uses('UserminAppModel', 'Usermin.Model');
 /**
  * Umpermission Model
  *
@@ -19,13 +19,6 @@ class Umpermission extends UserminAppModel {
 		'Umrole' => array(
 			'className' => 'Umrole',
 			'foreignKey' => 'umrole_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'Umuser' => array(
-			'className' => 'Umuser',
-			'foreignKey' => 'umuser_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

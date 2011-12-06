@@ -1,5 +1,5 @@
 <?php
-App::uses('UserminAppController', 'Controller');
+App::uses('UserminAppController', 'Usermin.Controller');
 /**
  * Umroles Controller
  *

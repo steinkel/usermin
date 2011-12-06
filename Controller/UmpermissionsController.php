@@ -1,5 +1,5 @@
 <?php
-App::uses('UserminAppController', 'Controller');
+App::uses('UserminAppController', 'Usermin.Controller');
 /**
  * Umpermissions Controller
  *
@@ -48,8 +48,7 @@ class UmpermissionsController extends UserminAppController {
 			}
 		}
 		$umroles = $this->Umpermission->Umrole->find('list');
-		$umusers = $this->Umpermission->Umuser->find('list');
-		$this->set(compact('umroles', 'umusers'));
+		$this->set(compact('umroles'));
 	}
 
 /**

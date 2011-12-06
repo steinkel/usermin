@@ -1,5 +1,5 @@
 <?php
-App::uses('UserminAppModel', 'Model');
+App::uses('UserminAppModel', 'Usermin.Model');
 /**
  * Umrole Model
  *

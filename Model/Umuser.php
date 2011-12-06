@@ -1,6 +1,6 @@
 <?php
 
-App::uses('UserminAppModel', 'Model');
+App::uses('UserminAppModel', 'Usermin.Model');
 
 /**
  * Umuser Model
@@ -69,27 +69,6 @@ class Umuser extends UserminAppModel {
             'conditions' => '',
             'fields' => '',
             'order' => ''
-        )
-    );
-
-    /**
-     * hasMany associations
-     *
-     * @var array
-     */
-    public $hasMany = array(
-        'Umpermission' => array(
-            'className' => 'Umpermission',
-            'foreignKey' => 'umuser_id',
-            'dependent' => false,
-            'conditions' => '',
-            'fields' => '',
-            'order' => '',
-            'limit' => '',
-            'offset' => '',
-            'exclusive' => '',
-            'finderQuery' => '',
-            'counterQuery' => ''
         )
     );
 
