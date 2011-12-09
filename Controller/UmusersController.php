@@ -15,7 +15,7 @@ class UmusersController extends UserminAppController {
     }
 
     public function login() {
-        debug('in umusers.login');
+        //debug('in umusers.login');
         if ($this->request -> isPost()) {
             if ($this->Auth->login()) {
                 $this->redirect($this->Auth->redirect());
