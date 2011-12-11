@@ -16,11 +16,6 @@
 			<?php echo h($umuser['Umuser']['email']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Password'); ?></dt>
-		<dd>
-			<?php echo h($umuser['Umuser']['password']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Umrole'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($umuser['Umrole']['name'], array('controller' => 'umroles', 'action' => 'view', $umuser['Umrole']['id'])); ?>

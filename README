@@ -10,7 +10,7 @@ It's based on jedt/SparkPlug plugin
 TODO
 ----
 admin backend (dashboard, default routes for include)
-user registration
+user registration (email validation link)
 user myaccount
 allowed by owner ?
 user overrides
@@ -23,8 +23,11 @@ idea: random prefix for the database connection and shell for install
 ajax login ?
 facebook / twitter / other login
 * routes algorithm
+remember me cookies and logintokens
 
 DONE
 ----
+user creation sends email
+configuration file
 simple routes and controller algorithm
 define permissions using code instead of database -- better use only database

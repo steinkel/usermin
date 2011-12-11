@@ -2,10 +2,8 @@
 	<h2><?php echo __('Umusers');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('username');?></th>
 			<th><?php echo $this->Paginator->sort('email');?></th>
-			<th><?php echo $this->Paginator->sort('password');?></th>
 			<th><?php echo $this->Paginator->sort('umrole_id');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
@@ -13,10 +11,8 @@
 	$i = 0;
 	foreach ($umusers as $umuser): ?>
 	<tr>
-		<td><?php echo h($umuser['Umuser']['id']); ?>&nbsp;</td>
 		<td><?php echo h($umuser['Umuser']['username']); ?>&nbsp;</td>
 		<td><?php echo h($umuser['Umuser']['email']); ?>&nbsp;</td>
-		<td><?php echo h($umuser['Umuser']['password']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($umuser['Umrole']['name'], array('controller' => 'umroles', 'action' => 'view', $umuser['Umrole']['id'])); ?>
 		</td>

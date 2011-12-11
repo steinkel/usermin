@@ -88,6 +88,11 @@ class UmusersController extends UserminAppController {
             throw new NotFoundException(__('Invalid umuser'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
+            // leave password untouched if not modified
+            $this->log($this->request->data);
+            if ($this->request->data['Umuser']['password'] == ''){
+                unset($this->request->data['Umuser']['password']);
+            }
             if ($this->Umuser->save($this->request->data)) {
                 $this->Session->setFlash(__('The umuser has been saved'));
                 $this->redirect(array('action' => 'index'));
