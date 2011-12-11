@@ -9,7 +9,6 @@ It's based on jedt/SparkPlug plugin
 
 TODO
 ----
-admin backend (dashboard, default routes for include)
 user registration (email validation link)
 user myaccount
 allowed by owner ?
@@ -17,7 +16,6 @@ user overrides
 user / role tree ?
 permission inheritance
 permission calculated per user ?
-authentication using auth custom class
 rule cache
 idea: random prefix for the database connection and shell for install
 ajax login ?
@@ -27,6 +25,8 @@ remember me cookies and logintokens
 
 DONE
 ----
+authentication using auth custom class
+admin backend (dashboard, default routes for include used cakeplugin for loading routes)
 user creation sends email
 configuration file
 simple routes and controller algorithm

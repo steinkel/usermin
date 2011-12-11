@@ -11,7 +11,7 @@ class UmusersController extends UserminAppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('login', 'logout', 'loggedout');
+        $this->Auth->allow('add','login', 'logout', 'loggedout');
     }
 
     public function login() {

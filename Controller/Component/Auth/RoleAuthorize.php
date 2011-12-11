@@ -33,9 +33,9 @@ class RoleAuthorize extends BaseAuthorize {
         foreach ($permissionsForUserRole as $perm) {
             $this->_log("checking permission " . $perm['Umpermission']['id'] . ' = p(' . $perm['Umpermission']['plugin'] . ') c(' . $perm['Umpermission']['controller'] . ') a(' . $perm['Umpermission']['action'] . ')');
             // strict validation, not using * yet
-            if (strtoupper($actionRequested['plugin']) == strtoupper($perm['Umpermission']['plugin']) && 
-                    strtoupper($actionRequested['controller']) == strtoupper($perm['Umpermission']['controller']) && 
-                    strtoupper($actionRequested['action']) == strtoupper($perm['Umpermission']['action'])) {
+            if ($perm['Umpermission']['plugin'] == '*' || (strtoupper($actionRequested['plugin']) == strtoupper($perm['Umpermission']['plugin'])) && 
+                    $perm['Umpermission']['controller'] == '*' || (strtoupper($actionRequested['controller']) == strtoupper($perm['Umpermission']['controller'])) && 
+                    $perm['Umpermission']['action'] == '*' || (strtoupper($actionRequested['action']) == strtoupper($perm['Umpermission']['action']))) {
                 $this->_log("permission matches, returning true if allowed");
                 return ($perm['Umpermission']['allowed'] == 1);
             }

@@ -90,7 +90,11 @@ class Umuser extends UserminAppModel {
             $email->to($this->data['Umuser']['email']);
             $email->subject('New user created');
             //$email->transport('Debug');
+            try{
             $result = $email->send('Username: ' . $this->data['Umuser']['username']);
+            } catch (Exception $ex){
+                // we could not send the email, ignore it
+            }
             $this->log($result, LOG_DEBUG);
         }
     }
