@@ -1,8 +1,7 @@
 <div class="umroles index">
-	<h2><?php echo __('Umroles');?></h2>
+	<h2><?php echo __('Roles');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
 			<th><?php echo $this->Paginator->sort('rank');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
@@ -11,7 +10,6 @@
 	$i = 0;
 	foreach ($umroles as $umrole): ?>
 	<tr>
-		<td><?php echo h($umrole['Umrole']['id']); ?>&nbsp;</td>
 		<td><?php echo h($umrole['Umrole']['name']); ?>&nbsp;</td>
 		<td><?php echo h($umrole['Umrole']['rank']); ?>&nbsp;</td>
 		<td class="actions">
@@ -40,10 +38,10 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Umrole'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Umpermissions'), array('controller' => 'umpermissions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Umpermission'), array('controller' => 'umpermissions', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Umusers'), array('controller' => 'umusers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Umuser'), array('controller' => 'umusers', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Role'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Permissions'), array('controller' => 'umpermissions', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Permission'), array('controller' => 'umpermissions', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'umusers', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'umusers', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

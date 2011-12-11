@@ -1,7 +1,7 @@
 <div class="umusers form">
 <?php echo $this->Form->create('Umuser');?>
 	<fieldset>
-		<legend><?php echo __('Add Umuser'); ?></legend>
+		<legend><?php echo __('Add User'); ?></legend>
 	<?php
 		echo $this->Form->input('username');
 		echo $this->Form->input('email');
@@ -15,10 +15,10 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 
-		<li><?php echo $this->Html->link(__('List Umusers'), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(__('List Umroles'), array('controller' => 'umroles', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Umrole'), array('controller' => 'umroles', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Umpermissions'), array('controller' => 'umpermissions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Umpermission'), array('controller' => 'umpermissions', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index'));?></li>
+		<li><?php echo $this->Html->link(__('List Roles'), array('controller' => 'umroles', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Role'), array('controller' => 'umroles', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Permissions'), array('controller' => 'umpermissions', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Permission'), array('controller' => 'umpermissions', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

@@ -73,7 +73,6 @@ class UmpermissionsController extends UserminAppController {
 			$this->request->data = $this->Umpermission->read(null, $id);
 		}
 		$umroles = $this->Umpermission->Umrole->find('list');
-		$umusers = $this->Umpermission->Umuser->find('list');
 		$this->set(compact('umroles', 'umusers'));
 	}
 

@@ -1,5 +1,5 @@
 <div class="umusers view">
-<h2><?php  echo __('Umuser');?></h2>
+<h2><?php  echo __('User');?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
@@ -26,14 +26,14 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Umuser'), array('action' => 'edit', $umuser['Umuser']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Umuser'), array('action' => 'delete', $umuser['Umuser']['id']), null, __('Are you sure you want to delete # %s?', $umuser['Umuser']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Umusers'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Umuser'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Umroles'), array('controller' => 'umroles', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Umrole'), array('controller' => 'umroles', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Umpermissions'), array('controller' => 'umpermissions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Umpermission'), array('controller' => 'umpermissions', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Edit User'), array('action' => 'edit', $umuser['Umuser']['id'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Delete User'), array('action' => 'delete', $umuser['Umuser']['id']), null, __('Are you sure you want to delete # %s?', $umuser['Umuser']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New User'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Roles'), array('controller' => 'umroles', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Role'), array('controller' => 'umroles', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Permissions'), array('controller' => 'umpermissions', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Permission'), array('controller' => 'umpermissions', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="related">

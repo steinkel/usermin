@@ -1,13 +1,11 @@
 <div class="umpermissions index">
-	<h2><?php echo __('Umpermissions');?></h2>
+	<h2><?php echo __('Permissions');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id');?></th>
-			<th><?php echo $this->Paginator->sort('umrole_id');?></th>
+			<th><?php echo $this->Paginator->sort('umrole_id', 'Role');?></th>
 			<th><?php echo $this->Paginator->sort('plugin');?></th>
 			<th><?php echo $this->Paginator->sort('controller');?></th>
 			<th><?php echo $this->Paginator->sort('action');?></th>
-			<th><?php echo $this->Paginator->sort('params');?></th>
 			<th><?php echo $this->Paginator->sort('allowed');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
@@ -15,14 +13,12 @@
 	$i = 0;
 	foreach ($umpermissions as $umpermission): ?>
 	<tr>
-		<td><?php echo h($umpermission['Umpermission']['id']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($umpermission['Umrole']['name'], array('controller' => 'umroles', 'action' => 'view', $umpermission['Umrole']['id'])); ?>
 		</td>
 		<td><?php echo h($umpermission['Umpermission']['plugin']); ?>&nbsp;</td>
 		<td><?php echo h($umpermission['Umpermission']['controller']); ?>&nbsp;</td>
 		<td><?php echo h($umpermission['Umpermission']['action']); ?>&nbsp;</td>
-		<td><?php echo h($umpermission['Umpermission']['params']); ?>&nbsp;</td>
 		<td><?php echo h($umpermission['Umpermission']['allowed']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $umpermission['Umpermission']['id'])); ?>
@@ -50,10 +46,10 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Umpermission'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Umroles'), array('controller' => 'umroles', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Umrole'), array('controller' => 'umroles', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Umusers'), array('controller' => 'umusers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Umuser'), array('controller' => 'umusers', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Permission'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Roles'), array('controller' => 'umroles', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Role'), array('controller' => 'umroles', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'umusers', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'umusers', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
