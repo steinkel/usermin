@@ -56,6 +56,16 @@ INSTALLATION
 
 	Change /app/Plugin/Usermin/Config/usermin.php (parameters are explained there) to suit your needs.
 	Change /app/Plugin/Usermin/Config/routes.php (parameters are explained there) to suit your needs.
+
+6. Create a default superadmin user and password
+
+        There is a cake shell for doing it :) you only need to
+        6.1 go to folder yourapp/app
+        6.2 run the usermin init shell
+
+            $ Console/cake usermin.usermin init
+
+ALL DONE !           
 	
 
 TODO
