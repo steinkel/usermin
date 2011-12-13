@@ -1,15 +1,65 @@
-NOT YET USABLE
+ ---------------------------------------------------
+| Usermin is a simple auth plugin for cakephp 2.0.x |
+ ---------------------------------------------------
 
-Usermin is a CakePHP 2.0 User Management System, Authentication & Authorization
+And it's done using the new cakephp 2.0.x AuthComponent
 
-Objective: Allow a role or user based user management plug & play
+ALPHA Version
 
+Usermin is a CakePHP 2.0 User Management System, 
+Authentication & Authorization
+Allows role based user management plug & play
 It's based on jedt/SparkPlug plugin
 
+INSTALLATION
+------------
+
+1. Download the latest version or use git to keep the plugin up to date
+
+	cd yourapp/app/Plugin
+	git clone git://github.com/steinkel/usermin.git Usermin
+
+2. Schema import (use your favorite sql tool to import the schema)
+
+	yourapp/app/Plugin/Usermin/Config/Schema/dump.sql
+
+3. Configure the component in your AppController class
+
+        Your yourapp/app/Controller/AppController.php should look like this:
+
+        <?php
+        class AppController extends Controller {
+            public $components = array(
+                'Auth' => array(
+                    'loginAction' => array('plugin' => 'usermin', 'controller' => 'umusers', 'action' => 'login'),
+                    //'loginRedirect' => array('controller' => 'pages', 'action' => 'display', 'loggedin'),
+                    //'logoutRedirect' => array('controller' => 'pages', 'action' => 'display', 'loggedout'),
+                    // debug param true prints extra auth debug to the debug.log file. Disable the debug in production
+                    'authorize' => array('Usermin.Role' => array('debug' => true, 'authorizeAll' => false)),
+                    'authenticate' => array('Form' => array('userModel' => 'Usermin.Umuser', 'fields' => array('username' => 'username', 'password' => 'password'))
+                    )
+                )
+            );
+        
+        ...
+
+4. Enable Plugin in your bootstrap.php
+
+        yourapp/app/Config/bootstrap.php should include this line
+
+        // load Usermin plugin and apply plugin routes. Keep all the other plugins you are using here
+        CakePlugin::loadAll(array(
+            'Usermin' => array('routes' => true),
+        ));
+		
+5. Adjust plugin configuration
+
+	Change /app/Plugin/Usermin/Config/usermin.php (parameters are explained there) to suit your needs.
+	Change /app/Plugin/Usermin/Config/routes.php (parameters are explained there) to suit your needs.
+	
 
 TODO
 ----
-console shell for init
 user registration (email validation link)
 user myaccount
 allowed by owner ?
@@ -19,13 +69,15 @@ permission inheritance
 permission calculated per user ?
 rule cache
 idea: random prefix for the database connection and shell for install
+database connection (as seen in authake)
 ajax login ?
 facebook / twitter / other login
-* routes algorithm
 remember me cookies and logintokens
 
 DONE
 ----
+* routes algorithm
+console shell for init
 authentication using auth custom class
 admin backend (dashboard, default routes for include used cakeplugin for loading routes)
 user creation sends email
