@@ -57,4 +57,13 @@ class UserminShell extends AppShell {
         }
     }
 
+    public function getOptionParser() {
+        $parser = parent::getOptionParser();
+        return $parser->description(
+                        __d('usermin', 'Usermin shell helps you to initialize your Usermin authentication system')
+                )->addSubcommand('init', array(
+                    'help' => __d('usermin', 'Check and create if not exists a superadmin user and role. Superadmin is allowed to do everything')
+                ));
+    }
+
 }
