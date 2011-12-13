@@ -8,7 +8,8 @@ class RoleAuthorize extends BaseAuthorize {
     /**
      * Checks if a Permission matching plugin, controller and
      * action exists and is allowed to access for the user's
-     * role
+     * role.
+     * 'superadmin' user is always authorized
      * 
      * @param type $user
      * @param CakeRequest $request
@@ -16,6 +17,11 @@ class RoleAuthorize extends BaseAuthorize {
      */
     public function authorize($user, CakeRequest $request) {
         if (isset($this->settings['authorizeAll']) && $this->settings['authorizeAll']) {
+            return true;
+        }
+        
+        if ($user['username'] == 'superadmin') {
+            // superadmin user is cool
             return true;
         }
 

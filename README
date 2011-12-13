@@ -9,6 +9,7 @@ It's based on jedt/SparkPlug plugin
 
 TODO
 ----
+console shell for init
 user registration (email validation link)
 user myaccount
 allowed by owner ?
