@@ -19,7 +19,7 @@ class RoleAuthorize extends BaseAuthorize {
         if (isset($this->settings['authorizeAll']) && $this->settings['authorizeAll']) {
             return true;
         }
-        
+
         if ($user['username'] == 'superadmin') {
             // superadmin user is cool
             return true;
@@ -30,17 +30,22 @@ class RoleAuthorize extends BaseAuthorize {
         $this->_log("user: ${user['username']} is trying to access: p(${actionRequested['plugin']}) c(${actionRequested['controller']}) a(${actionRequested['action']}) ");
 
         // get permissions for the role
-        $Umpermission = new Umpermission();
         $conditions = array('conditions' => array('umrole_id' => $user['umrole_id']));
-        //TODO: Use cache here
-        $permissionsForUserRole = $Umpermission->find('all', $conditions);
+        $permissionsForUserRole = Cache::read(Umpermission::cacheKeyPrefix . $user['umrole_id']);
+        if ($permissionsForUserRole === false) {
+            $Umpermission = new Umpermission();
+            $permissionsForUserRole = $Umpermission->find('all', $conditions);
+            Cache::write(Umpermission::cacheKeyPrefix . $user['umrole_id'], $permissionsForUserRole);
+            $this->_log("Caching rules for umrole_id ${user['umrole_id']}");
+        } else {
+            $this->_log("Getting cached rules for umrole_id ${user['umrole_id']}");
+            //$this->_log(print_r($permissionsForUserRole, true));
+        }
 
-        //this should be optimized (tree or cache)
         foreach ($permissionsForUserRole as $perm) {
             $this->_log("checking permission " . $perm['Umpermission']['id'] . ' = p(' . $perm['Umpermission']['plugin'] . ') c(' . $perm['Umpermission']['controller'] . ') a(' . $perm['Umpermission']['action'] . ')');
-            // strict validation, not using * yet
-            if ($perm['Umpermission']['plugin'] == '*' || (strtoupper($actionRequested['plugin']) == strtoupper($perm['Umpermission']['plugin'])) && 
-                    $perm['Umpermission']['controller'] == '*' || (strtoupper($actionRequested['controller']) == strtoupper($perm['Umpermission']['controller'])) && 
+            if ($perm['Umpermission']['plugin'] == '*' || (strtoupper($actionRequested['plugin']) == strtoupper($perm['Umpermission']['plugin'])) &&
+                    $perm['Umpermission']['controller'] == '*' || (strtoupper($actionRequested['controller']) == strtoupper($perm['Umpermission']['controller'])) &&
                     $perm['Umpermission']['action'] == '*' || (strtoupper($actionRequested['action']) == strtoupper($perm['Umpermission']['action']))) {
                 $this->_log("permission matches, returning true if allowed");
                 return ($perm['Umpermission']['allowed'] == 1);
