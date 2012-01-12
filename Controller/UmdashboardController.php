@@ -7,7 +7,7 @@ App::uses('UserminAppController', 'Usermin.Controller');
  */
 class UmdashboardController extends UserminAppController {
 
-    var $uses = array('Usermin.Umuser', 'Usermin.Umpermission', 'Usermin.Umrole');
+    public $uses = array('Usermin.Umuser', 'Usermin.Umpermission', 'Usermin.Umrole');
     public function index() {
         
         $this->set('umusersCount', $this->Umuser->find('count'));

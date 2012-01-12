@@ -23,7 +23,7 @@ class Umuser extends UserminAppModel {
      *
      * @var array
      */
-    var $validate = array(
+    public $validate = array(
         "username" => array(
             'mustUnique' => array(
                 'rule' => array('isUnique'),
