@@ -1,9 +1,10 @@
 <?php
 
 class UserminAppController extends AppController {
-    public function beforeFilter(){
-        Configure::load('Usermin.usermin');
-    }
 
+	public $components = array('Session');	
+
+	public function beforeFilter(){
+		Configure::load('Usermin.usermin');
+	}
 }
-
