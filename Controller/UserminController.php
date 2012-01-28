@@ -1,6 +1,6 @@
 <?php
 
-class UserminAppController extends AppController {
+class UserminController extends AppController {
 
 	public $components = array('Session');	
 
