@@ -70,14 +70,31 @@ class Umuser extends UserminAppModel {
      * @var array
      */
     public $belongsTo = array(
-        'Umrole' => array(
-            'className' => 'Umrole',
-            'foreignKey' => 'umrole_id',
-            'conditions' => '',
-            'fields' => '',
-            'order' => ''
-        )
+      'Umrole' => array(
+        'className' => 'Umrole',
+        'foreignKey' => 'umrole_id',
+        'conditions' => '',
+        'fields' => '',
+        'order' => ''
+      )
     );
+
+
+    function reset_password( $email=null ){
+      if( !isset($email) || empty($email) ){
+        throw new NoEmailException();
+      }
+
+      $user_changed= $this->find( "first", array("conditions"=> array( "email"=>$email ) ) );
+      if($user_changed==false){
+        throw new NoUserFound();
+      }
+
+      $token_password= crypt( $email, Configure::read("Security.salt") );
+      $user_changed["Umuser"]["token_password"]= crypt( "no_password", Configure::read("Security.salt") );
+      $user_changed["Umuser"]["token_password"]=$token_password;
+      $this->save( $user_changed );
+    }
 
     function afterSave($created) {
         if ($created && Configure::read('Usermin.sendEmailAfterUserCreated')) {

@@ -11,7 +11,7 @@ class UmusersController extends UserminAppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('login', 'logout', 'loggedout');
+        $this->Auth->allow('login', 'logout', 'loggedout', 'reset_password');
     }
 
     public function login() {
@@ -127,5 +127,30 @@ class UmusersController extends UserminAppController {
         $this->Session->setFlash(__('Umuser was not deleted'));
         $this->redirect(array('action' => 'index'));
     }
+
+    public function reset_password(){
+      if( isset( $this->request->data["Umuser"]["email"] ) ){
+        $email= $this->request->data["Umuser"]["email"];
+
+        try{
+          $this->Umuser->reset_password( $email );
+          $this->Session->setFlash(__('To initiate the reset proccess. please follow the instruction sent it to your email account'));
+
+          $this->redirect(array('action' => 'login'), null, false);
+          return 'redirect to Login';
+
+        }catch(NoEmailException $error){
+          error_log( get_class( $error ) );
+          $this->Session->setFlash(__('Please Enter a Valid Email'));
+
+        }catch(NoUserFound $error){
+          error_log( get_class( $error ) );
+          $this->Session->setFlash(__('The Email Was Not Found'));
+        }
+
+      }
+    }
+
+
 
 }
