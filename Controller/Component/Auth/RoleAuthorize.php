@@ -19,6 +19,11 @@ class RoleAuthorize extends BaseAuthorize {
         if (isset($this->settings['authorizeAll']) && $this->settings['authorizeAll']) {
             return true;
         }
+        
+        if (!isset($user['username']) || !isset($user['umrole_id'])){
+            $this->_log('No username or role was defined, so you are not authorized');
+            return false;
+        }
 
         if ($user['username'] == 'superadmin') {
             // superadmin user is cool
