@@ -39,7 +39,7 @@ class RoleAuthorizeTest extends CakeTestCase {
         
         $request = new CakeRequest('/notauthorized/index');
         
-        debug(Router::parse($request->here(false)));
+        //debug(Router::parse($request->here(false)));
         
         $this->assertFalse($this->auth->authorize($user, $request));
 
@@ -52,11 +52,11 @@ class RoleAuthorizeTest extends CakeTestCase {
         $user = array('username' => 'unauthorized', 'umrole_id' => 'groupidnotexists');
         $this->assertFalse($this->auth->authorize($user, $request));
     }
-    /*
-    public function testAuthorizeSuccess(){
+    
+   /* public function testAuthorizeSuccess(){
         
-    }
-    */
+    }*/
+    
     
 
 }
