@@ -28,12 +28,12 @@ class UmroleFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'id' => '00000000-0000-0000-0000-000000000000',
-			'name' => 'group-0',
+			'name' => 'role-0',
 			'rank' => 0
 		),
 		array(
 			'id' => '11111111-1111-1111-1111-111111111111',
-			'name' => 'group-1',
+			'name' => 'role-1',
 			'rank' => 1
 		),
 	);

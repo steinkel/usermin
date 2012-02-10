@@ -19,8 +19,8 @@ class RoleAuthorize extends BaseAuthorize {
         if (isset($this->settings['authorizeAll']) && $this->settings['authorizeAll']) {
             return true;
         }
-        
-        if (!isset($user['username']) || !isset($user['umrole_id'])){
+
+        if (!isset($user['username']) || !isset($user['umrole_id'])) {
             $this->_log('No username or role was defined, so you are not authorized');
             return false;
         }
@@ -31,7 +31,7 @@ class RoleAuthorize extends BaseAuthorize {
         }
 
         $actionRequested = Router::parse($request->here(false));
-        if (empty($actionRequested)){
+        if (empty($actionRequested)) {
             $this->_log('Action requested does not exist, so you are not authorized');
             return false;
         }
@@ -42,22 +42,26 @@ class RoleAuthorize extends BaseAuthorize {
         $conditions = array('conditions' => array('umrole_id' => $user['umrole_id']));
         $permissionsForUserRole = Cache::read(Umpermission::cacheKeyPrefix . $user['umrole_id']);
         if ($permissionsForUserRole === false) {
-            $Umpermission = new Umpermission();
+            $Umpermission = ClassRegistry::init('Usermin.Umpermission');
             $permissionsForUserRole = $Umpermission->find('all', $conditions);
             Cache::write(Umpermission::cacheKeyPrefix . $user['umrole_id'], $permissionsForUserRole);
             $this->_log("Caching rules for umrole_id ${user['umrole_id']}");
         } else {
             $this->_log("Getting cached rules for umrole_id ${user['umrole_id']}");
-            //$this->_log(print_r($permissionsForUserRole, true));
         }
+        $this->_log(print_r($permissionsForUserRole, true));
 
         foreach ($permissionsForUserRole as $perm) {
-            $this->_log("checking permission " . $perm['Umpermission']['id'] . ' = p(' . $perm['Umpermission']['plugin'] . ') c(' . $perm['Umpermission']['controller'] . ') a(' . $perm['Umpermission']['action'] . ')');
-            if ($perm['Umpermission']['plugin'] == '*' || (strtoupper($actionRequested['plugin']) == strtoupper($perm['Umpermission']['plugin'])) &&
-                    $perm['Umpermission']['controller'] == '*' || (strtoupper($actionRequested['controller']) == strtoupper($perm['Umpermission']['controller'])) &&
-                    $perm['Umpermission']['action'] == '*' || (strtoupper($actionRequested['action']) == strtoupper($perm['Umpermission']['action']))) {
-                $this->_log("permission matches, returning true if allowed");
-                return ($perm['Umpermission']['allowed'] == 1);
+            $this->_log("checking permission " . $perm['Umpermission']['id'] . ' = p(' . $perm['Umpermission']['plugin'] . ') c(' . $perm['Umpermission']['controller'] . ') a(' . $perm['Umpermission']['action'] . ') against p(' . $actionRequested['plugin'] . ') c(' . $actionRequested['controller'] . ') a(' . $actionRequested['action'] . ')');
+            if ($perm['Umpermission']['plugin'] == '*' || strtoupper($actionRequested['plugin']) == strtoupper($perm['Umpermission']['plugin'])) {
+                $this->_log("plugin matched");
+                if ($perm['Umpermission']['controller'] == '*' || strtoupper($actionRequested['controller']) == strtoupper($perm['Umpermission']['controller'])) {
+                    $this->_log("controller matched");
+                    if ($perm['Umpermission']['action'] == '*' || strtoupper($actionRequested['action']) == strtoupper($perm['Umpermission']['action'])) {
+                        $this->_log("permission matches, returning true if allowed");
+                        return ($perm['Umpermission']['allowed'] == 1);
+                    }
+                }
             }
         }
         $this->_log("no rules matched. user is not allowed ");
@@ -73,6 +77,7 @@ class RoleAuthorize extends BaseAuthorize {
     private function _log($var) {
         if (isset($this->settings['debug']) && $this->settings['debug']) {
             $this->controller()->log($var, LOG_DEBUG);
+            //debug($var);
         }
     }
 

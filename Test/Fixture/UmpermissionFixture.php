@@ -31,14 +31,14 @@ class UmpermissionFixture extends CakeTestFixture {
  * @var array
  */
 	public $records = array(
-                // group-0 allowed to /pages/display/*
+                // group-0 allowed to /pages/display
 		array(
 			'id' => '00000000-0000-0000-0000-000000000000',
 			'umrole_id' => '00000000-0000-0000-0000-000000000000',
 			'umuser_id' => 'not-used',
 			'plugin' => '',
-			'controller' => 'pages',
-			'action' => 'display',
+			'controller' => 'controllerauthorized',
+			'action' => 'actionauthorized',
 			'params' => '',
 			'allowed' => 1
 		),
