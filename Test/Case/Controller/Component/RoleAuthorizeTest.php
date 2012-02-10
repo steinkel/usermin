@@ -16,6 +16,9 @@ class RoleAuthorizeTest extends CakeTestCase {
                 ->will($this->returnValue($this->controller));
 
         $this->auth = new RoleAuthorize($this->components);
+        
+        // loading your application routes
+        require APP . 'Config' . DS . 'routes.php';
     }
 
     /**
@@ -31,9 +34,13 @@ class RoleAuthorizeTest extends CakeTestCase {
      *
      * @return void
      */
-    public function testAuthorizeFailureNoUser() {
+    public function testAuthorizeFailureNoUserOrGroup() {
         $user = array();
-        $request = new CakeRequest('/usermintestgoingtofail/index', false);
+        
+        $request = new CakeRequest('/notauthorized/index');
+        
+        debug(Router::parse($request->here(false)));
+        
         $this->assertFalse($this->auth->authorize($user, $request));
 
         $user = array('username' => 'unauthorized');
@@ -41,10 +48,15 @@ class RoleAuthorizeTest extends CakeTestCase {
 
         $user = array('umrole_id' => 'groupidnotexists');
         $this->assertFalse($this->auth->authorize($user, $request));
-/*
+
         $user = array('username' => 'unauthorized', 'umrole_id' => 'groupidnotexists');
         $this->assertFalse($this->auth->authorize($user, $request));
- */
     }
+    /*
+    public function testAuthorizeSuccess(){
+        
+    }
+    */
+    
 
 }

@@ -31,6 +31,10 @@ class RoleAuthorize extends BaseAuthorize {
         }
 
         $actionRequested = Router::parse($request->here(false));
+        if (empty($actionRequested)){
+            $this->_log('Action requested does not exist, so you are not authorized');
+            return false;
+        }
 
         $this->_log("user: ${user['username']} is trying to access: p(${actionRequested['plugin']}) c(${actionRequested['controller']}) a(${actionRequested['action']}) ");
 
