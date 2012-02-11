@@ -54,6 +54,17 @@ class UmpermissionFixture extends CakeTestFixture {
             'params' => '',
             'allowed' => 0
         ),
+        // permission for plugin usermin
+        array(
+            'id' => '22222222-2222-2222-2222-222222222222',
+            'umrole_id' => '00000000-0000-0000-0000-000000000000',
+            'umuser_id' => 'not-used',
+            'plugin' => 'usermin',
+            'controller' => 'controllerauthorizedonlyinsideplugin',
+            'action' => 'actionauthorizedonlyinsideplugin',
+            'params' => '',
+            'allowed' => 1
+        ),
     );
 
 }

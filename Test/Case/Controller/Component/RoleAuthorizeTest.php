@@ -104,6 +104,26 @@ class RoleAuthorizeTest extends CakeTestCase {
         $request = new CakeRequest('/controllernotallowed/actionnotallowed');
         $this->assertFalse($this->auth->authorize($user, $request));
     }
+    
+    public function testAuthorizeInsidePlugins() {
+        $user = array('username' => 'user-0', 'umrole_id' => '00000000-0000-0000-0000-000000000000');
+
+        $request = new CakeRequest('/usermin/controllerauthorizedonlyinsideplugin/actionauthorizedonlyinsideplugin');
+        $this->assertTrue($this->auth->authorize($user, $request));
+        
+        $request = new CakeRequest('/controllerauthorizedonlyinsideplugin/actionauthorizedonlyinsideplugin');
+        $this->assertFalse($this->auth->authorize($user, $request));
+
+        $request = new CakeRequest('/usermin/othercontroller/actionauthorizedonlyinsideplugin');
+        $this->assertFalse($this->auth->authorize($user, $request));
+
+        $request = new CakeRequest('/usermin/controllerauthorizedonlyinsideplugin/otheraction');
+        $this->assertFalse($this->auth->authorize($user, $request));
+        
+    }
+    
+    
+    
 
     //TODO: Tests to cover '*' rules    
     //TODO: Tests to cover not authorized roles
