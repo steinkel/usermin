@@ -119,12 +119,28 @@ class RoleAuthorizeTest extends CakeTestCase {
 
         $request = new CakeRequest('/usermin/controllerauthorizedonlyinsideplugin/otheraction');
         $this->assertFalse($this->auth->authorize($user, $request));
-        
     }
     
-    
-    
+    public function testAsteriskPermissions(){
+        $user = array('username' => 'user-0', 'umrole_id' => '00000000-0000-0000-0000-000000000000');
 
-    //TODO: Tests to cover '*' rules    
-    //TODO: Tests to cover not authorized roles
+        $request = new CakeRequest('/usermin/controllerauthorizedineveryplugin/actionauthorizedineveryplugin');
+        $this->assertTrue($this->auth->authorize($user, $request));
+
+        $request = new CakeRequest('/usermin/controllerdeniedineveryplugin/actiondeniedineveryplugin');
+        $this->assertFalse($this->auth->authorize($user, $request));
+        
+        $request = new CakeRequest('/othercontroller/actionauthorizedineverycontroller');
+        $this->assertTrue($this->auth->authorize($user, $request));
+        
+        $request = new CakeRequest('/othercontroller/actiondeniedineverycontroller');
+        $this->assertFalse($this->auth->authorize($user, $request));
+        
+        $request = new CakeRequest('/controllerallactionsauthorized/otheraction');
+        $this->assertTrue($this->auth->authorize($user, $request));
+        
+        $request = new CakeRequest('/controllerallactionsdenied/otheraction');
+        $this->assertFalse($this->auth->authorize($user, $request));
+                
+    }
 }

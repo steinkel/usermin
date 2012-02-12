@@ -65,6 +65,69 @@ class UmpermissionFixture extends CakeTestFixture {
             'params' => '',
             'allowed' => 1
         ),
+        // asterisk permissions - plugin
+        array(
+            'id' => '33333333-3333-3333-3333-333333333333',
+            'umrole_id' => '00000000-0000-0000-0000-000000000000',
+            'umuser_id' => 'not-used',
+            'plugin' => '*',
+            'controller' => 'controllerauthorizedineveryplugin',
+            'action' => 'actionauthorizedineveryplugin',
+            'params' => '',
+            'allowed' => 1
+        ),
+        array(
+            'id' => '44444444-4444-4444-4444-444444444444',
+            'umrole_id' => '00000000-0000-0000-0000-000000000000',
+            'umuser_id' => 'not-used',
+            'plugin' => '*',
+            'controller' => 'controllerdeniedineveryplugin',
+            'action' => 'actiondeniedineveryplugin',
+            'params' => '',
+            'allowed' => 0
+        ),
+        // asterisk permissions - controller
+        array(
+            'id' => '55555555-5555-5555-5555-555555555555',
+            'umrole_id' => '00000000-0000-0000-0000-000000000000',
+            'umuser_id' => 'not-used',
+            'plugin' => '',
+            'controller' => '*',
+            'action' => 'actionauthorizedineverycontroller',
+            'params' => '',
+            'allowed' => 1
+        ),
+        array(
+            'id' => '66666666-6666-6666-6666-666666666666',
+            'umrole_id' => '00000000-0000-0000-0000-000000000000',
+            'umuser_id' => 'not-used',
+            'plugin' => '',
+            'controller' => '*',
+            'action' => 'actiondeniedineverycontroller',
+            'params' => '',
+            'allowed' => 0
+        ),
+        // asterisk permissions - action
+        array(
+            'id' => '77777777-7777-7777-7777-777777777777',
+            'umrole_id' => '00000000-0000-0000-0000-000000000000',
+            'umuser_id' => 'not-used',
+            'plugin' => '',
+            'controller' => 'controllerallactionsauthorized',
+            'action' => '*',
+            'params' => '',
+            'allowed' => 1
+        ),
+        array(
+            'id' => '88888888-8888-8888-8888-888888888888',
+            'umrole_id' => '00000000-0000-0000-0000-000000000000',
+            'umuser_id' => 'not-used',
+            'plugin' => '',
+            'controller' => 'controllerallactionsdenied',
+            'action' => '*',
+            'params' => '',
+            'allowed' => 0
+        ),
     );
 
 }
