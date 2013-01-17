@@ -35,7 +35,7 @@ class Umpermission extends UserminAppModel {
      */
     public function afterSave() {
         if (isset($this->data[$this->alias]['umrole_id'])) {
-            Cache::delete($this::cacheKeyPrefix . $this->data[$this->alias]['umrole_id']);
+            Cache::delete(self::cacheKeyPrefix . $this->data[$this->alias]['umrole_id']);
         }
         return true;
     }
