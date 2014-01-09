@@ -33,7 +33,7 @@ class Umpermission extends UserminAppModel {
      * Cleanning the rules cache on every save see class RoleAuthorize for cache using
      * @return type 
      */
-    public function afterSave() {
+    public function afterSave($created) {
         if (isset($this->data[$this->alias]['umrole_id'])) {
             Cache::delete(self::cacheKeyPrefix . $this->data[$this->alias]['umrole_id']);
         }
