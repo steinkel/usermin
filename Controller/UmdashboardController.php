@@ -1,11 +1,11 @@
 <?php
 
-App::uses('UserminAppController', 'Usermin.Controller');
+App::uses('UserminController', 'Usermin.Controller');
 
 /**
  * Dashboard for user management
  */
-class UmdashboardController extends UserminAppController {
+class UmdashboardController extends UserminController {
 
     public $uses = array('Usermin.Umuser', 'Usermin.Umpermission', 'Usermin.Umrole');
     public function index() {

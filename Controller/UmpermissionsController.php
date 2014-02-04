@@ -1,11 +1,11 @@
 <?php
-App::uses('UserminAppController', 'Usermin.Controller');
+App::uses('UserminController', 'Usermin.Controller');
 /**
  * Umpermissions Controller
  *
  * @property Umpermission $Umpermission
  */
-class UmpermissionsController extends UserminAppController {
+class UmpermissionsController extends UserminController {
 
 
 /**

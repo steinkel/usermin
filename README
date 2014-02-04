@@ -1,3 +1,25 @@
+if you are using 2.1 then the Consolescript won't work right out of the box.
+
+You wil have to place a short script in the app/Console directory as described here:
+
+
+http://book.cakephp.org/2.0/en/appendices/2-1-migration-guide.html?highlight=appshell
+
+Basicaly you add a file called app/Console/Command/AppShell.php to your application dir.
+Contents of that file:
+
+<?php
+App::uses('Shell', 'Console');
+class AppShell extends Shell {
+}
+?>
+
+All the classes have been upgraded to CakePhp 2.1
+
+
+Ton
+
+
  ---------------------------------------------------
 | Usermin is a simple auth plugin for cakephp 2.0.x |
  ---------------------------------------------------

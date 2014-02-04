@@ -1,13 +1,13 @@
 <?php
 
-App::uses('UserminAppController', 'Usermin.Controller');
+App::uses('UserminController', 'Usermin.Controller');
 
 /**
  * Umusers Controller
  *
  * @property Umuser $Umuser
  */
-class UmusersController extends UserminAppController {
+class UmusersController extends UserminController {
 
     public function beforeFilter() {
         parent::beforeFilter();
