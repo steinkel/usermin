@@ -11,11 +11,11 @@ App::uses('CakeEmail', 'Network/Email');
  */
 class Umuser extends UserminAppModel {
 
-    public function beforeSave() {
+    public function beforeSave($options = array()) {
         if (isset($this->data[$this->alias]['password'])) {
             $this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
         }
-        return true;
+        return parent::beforeSave();
     }
 
     /**
@@ -79,7 +79,7 @@ class Umuser extends UserminAppModel {
         )
     );
 
-    function afterSave($created) {
+    function afterSave($created, $options = array()) {
         if ($created && Configure::read('Usermin.sendEmailAfterUserCreated')) {
             // send email to newly created user
             $email = new CakeEmail();
@@ -94,9 +94,11 @@ class Umuser extends UserminAppModel {
             $result = $email->send('Username: ' . $this->data['Umuser']['username']);
             } catch (Exception $ex){
                 // we could not send the email, ignore it
+                $result = $ex->getMessage();
             }
             $this->log($result, LOG_DEBUG);
         }
+        parent::afterSave($created, $options);
     }
 
 }
