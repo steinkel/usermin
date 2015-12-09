@@ -1,3 +1,11 @@
+IMPORTANT: This plugin is obsolete and not maintained anymore, use at your own risk
+
+ALTERNATIVES: 
+* For CakePHP 2.x : https://github.com/cakedc/users
+* For CakePHP 3.x : https://github.com/cakedc/users/tree/3.1.x
+
+Thank you.
+
  ---------------------------------------------------
 | Usermin is a simple auth plugin for cakephp 2.0.x |
  ---------------------------------------------------
